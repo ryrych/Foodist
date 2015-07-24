@@ -1,0 +1,86 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewMeal">
+  <span class="fa fa-plus" /> Add new meal
+</button>
+
+<table class="table table-responsive table-striped">
+  <thead>
+    <th>date</th>
+    <th>name</th>
+    <th>price</th>
+    <th>calories</th>
+    <th>protein</th>
+    <th>fat</th>
+    <th>carbohydrates</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="meal in items">
+      <td ng-bind="meal.date | date : 'dd MMM yyyy HH:MM'" />
+      <td ng-bind="meal.name" />
+      <td ng-bind="meal.price" />
+      <td ng-bind="meal.calories" />
+      <td ng-bind="meal.protein" />
+      <td ng-bind="meal.fat" />
+      <td ng-bind="meal.carbohydrates" />
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="modal fade" id="addNewMeal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add new item</h4>
+      </div>
+      <form class="form-horizontal" ng-submit="MealsDir.addMeal(MealsDir.newMeal)">
+        <div class="modal-body">
+            <fieldset>
+              <div class="form-group">
+                <label class="col-md-4 control-label">Name</label>
+                <div class="col-md-4">
+                <input type="text" required ng-model="MealsDir.newMeal.name" class="form-control input-md">
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addFood">
+                <span class="fa fa-plus" /> Add food
+              </button>
+
+            </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Meal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addFood" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">List of food</h4>
+      </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <a ng-repeat="food in MealsDir.foods" class="list-group-item" ng-init="food.count = 1;">
+
+                <button type="button" ng-click="MealsDir.addFoodToMeal(food)" ng-disabled="food.count < 1 || food.count == null" class="btn-success btn">
+                  <span class="fa fa-plus"></span>
+                </button>
+                <input type="text" required ng-value='true' min="1" size="4" ng-model="food.count" name="name" value="">
+                <span class="pull-right h5">{{food.name}}</span>
+
+            </a>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
