@@ -12,8 +12,8 @@
     <th>fat</th>
     <th>carbohydrates</th>
   </thead>
-  <tbody>
-    <tr ng-repeat="meal in items">
+  <tbody ng-repeat="meal in items">
+    <tr ng-click="meal.selected ? meal.selected = false : meal.selected = true;">
       <td ng-bind="meal.date | date : 'dd MMM yyyy HH:MM'" />
       <td ng-bind="meal.name" />
       <td ng-bind="meal.price" />
@@ -21,6 +21,16 @@
       <td ng-bind="meal.protein" />
       <td ng-bind="meal.fat" />
       <td ng-bind="meal.carbohydrates" />
+    </tr>
+
+    <tr ng-repeat="mea in meal.foods" ng-show="meal.selected">
+      <td />
+      <td ng-bind="mea.name" class="success" />
+      <td ng-bind="mea.price" class="success" />
+      <td ng-bind="mea.calories" class="success" />
+      <td ng-bind="mea.protein" class="success" />
+      <td ng-bind="mea.fat" class="success" />
+      <td ng-bind="mea.carbohydrates" class="success" />
     </tr>
   </tbody>
 </table>

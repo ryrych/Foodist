@@ -66,6 +66,10 @@
 					$('#addNewMeal').modal('hide');
 				};
 
+				vm.selectMeal = function(meal) {
+					if(meal.selected) meal.selected = false; else meal.selected = true;
+				}
+
 
 			},
 			controllerAs: "MealsDir",
