@@ -8,6 +8,15 @@
     var vm = this;
 
     vm.allFood = FoodStore.allFood;
+
+		vm.importFood = function() {
+			FoodStore.import().then(function(data){
+				FoodStore.allFood = data;
+				vm.allFood = data;
+				FoodStore.storeAllFood();
+			});
+		}
+
 	});
 
   food.controller('MealsCtrl', function (FoodStore)

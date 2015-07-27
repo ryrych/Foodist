@@ -8,22 +8,9 @@
     data.myFood = store.get('myFood') ? store.get('myFood') : [];
     data.allFood = store.get('allFood') ? store.get('allFood') : [];
 
-    data.init = function() {
-      if (data.myFood.length === 0) {
-        data.myFood = store.get('myFood') ? store.get('myFood') : [];
-      }
-
-      if (data.allFood.length === 0) {
-        data.import();
-        data.allFood = store.get('allFood') ? store.get('allFood') : [];
-      }
-    };
-
-
     data.import = function(){
-      $http.get('assets/models/food.json').then(function(response){
-        data.allFood = response.data;
-        store.set('allFood', angular.copy(data.allFood));
+      return $http.get('assets/models/food.json').then(function(response){
+        return response.data;
       });
     };
 
@@ -71,10 +58,6 @@
       data.storeAllFood();
       swal("Good job!", "You removed the item!", "success");
     };
-
-
-
-    data.init();
 
     return data;
   });

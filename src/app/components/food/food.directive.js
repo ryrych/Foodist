@@ -67,8 +67,13 @@
 				};
 
 				vm.selectMeal = function(meal) {
-					if(meal.selected) meal.selected = false; else meal.selected = true;
-				}
+					if(meal.selected)
+					{
+						meal.selected = false;
+					} else {
+						meal.selected = true;
+					}
+				};
 
 
 			},
