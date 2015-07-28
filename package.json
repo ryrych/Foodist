@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "dependencies": {},
   "scripts": {
-    "postinstall": "gulp default",
     "test": "gulp test"
   },
   "devDependencies": {
