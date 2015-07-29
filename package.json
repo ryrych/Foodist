@@ -1,10 +1,14 @@
 {
   "name": "macgular",
   "version": "0.0.0",
+  "dependencies": {
+    "express": "^4.13.1",
+    "gzippo": "^0.2.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
-  "dependencies": {
+  "devDependencies": {
     "gulp": "~3.9.0",
     "gulp-autoprefixer": "~2.3.1",
     "gulp-angular-templatecache": "~1.6.0",
